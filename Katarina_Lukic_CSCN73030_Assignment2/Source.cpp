@@ -38,11 +38,20 @@ bool parseFromFile(string fileName, vector<STUDENT_DATA>& studentDataList) {
 
 	}
 
-
 	// close the file after use
 	myFile.close();
 	return true;
+
 }
+
+#ifdef _DEBUG	// print student data from vector - only for Debug Mode
+void printStudentData(vector<STUDENT_DATA> studentDataList) {
+	for (int i = 0; i < studentDataList.size(); i++) {
+		cout << "Student Name:" << studentDataList[i].lastName << ", " << studentDataList[i].firstName << endl;
+	}
+}
+#endif // DEBUG
+
 
 int main(void) {
 	
@@ -50,6 +59,10 @@ int main(void) {
 	vector<STUDENT_DATA> studentDataList;
 	// parse student data from the text file
 	parseFromFile("StudentData.txt", studentDataList);
+
+#ifdef _DEBUG	// print student data from vector - only for Debug Mode
+	printStudentData(studentDataList);
+#endif // DEBUG
 	return 1;
 
 }
